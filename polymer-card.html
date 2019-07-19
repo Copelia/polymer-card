@@ -1,0 +1,118 @@
+<!-- <link rel="import" href="../polymer/polymer-element.html"> -->
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/polymer/lib/elements/dom-repeat.html">
+
+
+<dom-module id="polymer-card">
+  <template>
+    <style>
+      /* :host {
+      } */
+
+      .container{
+        display: inline-flex;
+      } 
+
+      .right-col{
+        text-align: right;
+        margin-left: 50px;
+      }
+
+      .link-div{
+        text-align: center;
+      }
+
+      .bold{
+        font-weight: bold;
+      }
+
+
+    </style>
+
+    <paper-card>
+      <div class="card-content">
+        <div>Datos Demo</div>
+        <div class="container">
+          <template is="dom-repeat" items="{{list}}">
+            <div class="left-col">
+              <p>{{item.name}}</p>
+              <p>{{item.age}}</p> 
+              <p>{{item.phone}}</p> 
+            </div>
+          </template>
+          <template is="dom-repeat" items="{{list}}">
+            <div class="right-col">
+              <p style$="font-weight: {{item.type}};">{{item.valor}}</p>
+              <p class$="{{item.type}}">{{item.ageVal}}</p> 
+              <p>{{item.phoneVal}}</p> 
+            </div>
+          </template>
+        </div>
+          <div class="link-div">
+            <a target="_blank" on-click="someAction">Link Sorpresa</a>
+          </div>
+      </div>
+    </paper-card>
+
+  </template>
+
+  <script>
+    /**
+     * `polymer-card`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PolymerCard extends Polymer.Element {
+      static get is() { return 'polymer-card'; }
+      static get properties() {
+        return {
+            list: {
+              type: Array,
+              value() {
+                return [
+                  {
+                  name : 'Nombre',
+                  age: 'Edad',
+                  phone: 'Teléfono', 
+                  type: 'bold'
+                  },
+                  {
+                  valor: 'Juan',
+                  ageVal: 25,
+                  phoneVal: 44335565,
+                  type: 'bold'
+                  }
+                ]
+              }
+            },
+            click : {
+              type: Array,
+              value: function(){
+                return[
+                  {
+                    text : "Ver más",
+                    type: "blue",
+                    event: "click-elem",
+                    icon: "eye"
+                  }
+                ]
+              }
+            }
+          }
+        }
+
+        someAction(event){
+          if(event.target.click){
+            alert('Algo aquí');
+          }
+        }
+      };
+
+    window.customElements.define(PolymerCard.is, PolymerCard);
+  </script>
+</dom-module>
