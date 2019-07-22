@@ -58,12 +58,12 @@
             </div>
           </template>
         </div>
-        <template is="dom-repeat" items="{{click}}">
-          <div class="link-div">
-            <a class$="{{item.type}}" target="_blank" on-click="someAction">{{item.text}}</a>
-            <iron-icon icon="{{item.icon}}"></iron-icon>
-          </div>
-        </template>
+            <template is="dom-repeat" items="{{click}}">
+              <div class="link-div">
+                <a class$="{{item.type}}" target="_blank" on-click="someAction">{{item.text}}</a>
+                <iron-icon icon="{{item.icon}}"></iron-icon>
+              </div>
+            </template>
       </div>
     </paper-card>
 
@@ -94,7 +94,7 @@
                   type: ''
                   },
                   {
-                  valor: 'Juan',
+                  valor: '',
                   ageVal: '',
                   phoneVal: '',
                   type: ''
